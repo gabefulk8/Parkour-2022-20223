@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: panel_5
+  m_Name: gravel
   m_Shader: {fileID: 4800000, guid: 1ccecd9b89b8a4f14bfb64f29ddfcc81, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -21,13 +21,13 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: c0c97c572041598499caed7974b5d7c3, type: 3}
+        m_Texture: {fileID: 2800000, guid: 98395e2b978465643a6f5fbe4be96bd4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Glossiness: 0.5
+    - _Glossiness: 0
     - _Metallic: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 0.92398167, b: 0.66415095, a: 1}
   m_BuildTextureStacks: []
