@@ -7,6 +7,7 @@ TagManager:
   - Point
   - MovementLines
   - Interactable
+  - Death
   layers:
   - Default
   - TransparentFX

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -495,7 +495,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-342456
+  m_Name: pb_Mesh-197504
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -915,7 +915,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 383164759}
-  - component: {fileID: 383164758}
+  - component: {fileID: 383164760}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -923,23 +923,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &383164758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 383164757}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f95fc36208a8fe34da27022b6ecd85f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modules:
-  - {fileID: 2923692252451631639, guid: c4f2bd9f4afdea543b31ad12b954e3f5, type: 3}
-  - {fileID: 5480603531222139095, guid: 759cad1f08454984196b25d0b4553d91, type: 3}
-  startingmodule: {fileID: 8642531600262581978}
-  timer: 0
 --- !u!4 &383164759
 Transform:
   m_ObjectHideFlags: 0
@@ -955,6 +938,45 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &383164760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383164757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d37b45fe7f099488b4725ae13f8548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startmodules:
+  - {fileID: 905034102692139136, guid: 1eacaee90b1f78644ac008ab3381efde, type: 3}
+  trainmodules:
+  - {fileID: 905034102692139136, guid: 1eacaee90b1f78644ac008ab3381efde, type: 3}
+  - {fileID: 2571368005497850002, guid: 1da6c4c05df02244f9d531950943ec48, type: 3}
+  indoormodules:
+  - {fileID: 905034102692139136, guid: 1eacaee90b1f78644ac008ab3381efde, type: 3}
+  - {fileID: 2571368005497850002, guid: 1da6c4c05df02244f9d531950943ec48, type: 3}
+  rooftopmodules:
+  - {fileID: 5723158509282496428, guid: db06615e8d6d31f4aaa31410513003e3, type: 3}
+  - {fileID: 9006105087371803470, guid: 9a6a625e1fb2e024c83dd0c1e2348b7d, type: 3}
+  - {fileID: 3811002193871400097, guid: af325276545afa546bc3eafbf8a4c813, type: 3}
+  - {fileID: 6590033205821119787, guid: 3ae8940978a1bfc4ba68b624f37e4364, type: 3}
+  traintoroof:
+  - {fileID: 2049066888964890622, guid: fd6cbb968450c3646942951517e06695, type: 3}
+  traintoindoor:
+  - {fileID: 2049066888964890622, guid: fd6cbb968450c3646942951517e06695, type: 3}
+  indoortotrain:
+  - {fileID: 2049066888964890622, guid: fd6cbb968450c3646942951517e06695, type: 3}
+  indoortoroof:
+  - {fileID: 2049066888964890622, guid: fd6cbb968450c3646942951517e06695, type: 3}
+  rooftotrain:
+  - {fileID: 2049066888964890622, guid: fd6cbb968450c3646942951517e06695, type: 3}
+  rooftoindoor:
+  - {fileID: 2049066888964890622, guid: fd6cbb968450c3646942951517e06695, type: 3}
+  startingmodule: {fileID: 905034102692139142, guid: 1eacaee90b1f78644ac008ab3381efde,
+    type: 3}
 --- !u!1 &392884794
 GameObject:
   m_ObjectHideFlags: 0
@@ -95031,9 +95053,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4f2bd9f4afdea543b31ad12b954e3f5, type: 3}
---- !u!4 &8642531600262581978 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2923692252451631645, guid: c4f2bd9f4afdea543b31ad12b954e3f5,
-    type: 3}
-  m_PrefabInstance: {fileID: 6873471801570999495}
-  m_PrefabAsset: {fileID: 0}
