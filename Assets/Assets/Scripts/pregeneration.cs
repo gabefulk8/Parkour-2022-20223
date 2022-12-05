@@ -238,6 +238,16 @@ public class pregeneration : MonoBehaviour
 
     void increaseDeathSpeed()
     {
+        // player max run speed is 7, player min run speed is 4.5
+        // try to have it so that after like 1 min, the max speed of the death wall goes up to 5, after 1.5 min up to 6, after 2 min, up to 7  
+            /*
+                this could be done by having like 3 dif funciton to set the max speed of deathwall and invoking them all in start after those time periods or something (you can implement however u like tho, there are prob better ways)
+                ^ this is probably more for the Versus game mode. 
+            
+                For the solo endless runner would want the wall's max speed to cap at like 5.5 -> 6 range
+            */
+        // :)
+        
         if (deathSpeed >= 4)
         {
             deathSpeed = 4;
