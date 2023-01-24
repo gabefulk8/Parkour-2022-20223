@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public GameObject pauseMenu;
+    public GameObject controlMenu;
+    public GameObject mainMenuUI;
 
     void Start()
     {
@@ -58,5 +60,18 @@ public class UIManager : MonoBehaviour
     {
         Cursor.visible = false;
         RestartLevel();    
+    }
+
+    public void ControlScreenToggle()
+    {
+        if (controlMenu.activeSelf == false)
+        {
+            controlMenu.SetActive(true);
+            mainMenuUI.SetActive(false);
+        } else if (controlMenu.activeSelf == true)
+        {
+            controlMenu.SetActive(false);
+            mainMenuUI.SetActive(true);
+        }
     }
 }

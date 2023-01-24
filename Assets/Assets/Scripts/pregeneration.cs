@@ -27,8 +27,7 @@ public class pregeneration : MonoBehaviour
     private bool goOn;
 
     public GameObject deathPlane;
-    public float deathSpeed = 1.5f;
-    int timerDD = 0;
+    public float deathSpeed = 2f;
     
     void Start()
     {
@@ -38,24 +37,16 @@ public class pregeneration : MonoBehaviour
         currentmodule = startingmodule;
         Invoke("SpawnModule", 0f);
         InvokeRepeating("increaseDeathSpeed", 7, 7);
-      
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        
-        
-        if (timerDD == 60)
+        if (Time.timeScale == 1)
         {
-            if (Time.timeScale == 1)
-            {
-                deathPlane.transform.position += new Vector3(deathSpeed, 0, 0);
-            }
-            //Debug.Log(deathSpeed + ", " + deathPlane.transform.position.x);
-            timerDD = 0;
+            deathPlane.transform.position += new Vector3(deathSpeed / 60, 0, 0);
         }
-        timerDD++;
     }
+    
     void SpawnModule()
     {
         //choose next module type
@@ -233,7 +224,7 @@ public class pregeneration : MonoBehaviour
         repeat = -1;
         whichTheme = themevar;
         goOn = true;
-        deathSpeed = 1.5f;
+        deathSpeed = 2f;
     }
 
     void increaseDeathSpeed()
@@ -248,12 +239,12 @@ public class pregeneration : MonoBehaviour
             */
         // :)
         
-        if (deathSpeed >= 4)
+        if (deathSpeed >= 6)
         {
-            deathSpeed = 4;
+            deathSpeed = 6;
         } else
         {
-            deathSpeed *= 1.1f;
+            deathSpeed *= 1.25f;
         }
     }
 }
