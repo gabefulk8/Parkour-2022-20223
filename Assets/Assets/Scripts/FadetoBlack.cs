@@ -26,12 +26,20 @@ public class FadetoBlack : MonoBehaviour
         if (playery > (deathY + deathPlaneDistance)) black2.color = new Color32(0, 0, 0, 0);
         else if (playery <= (deathY + deathPlaneDistance) && playery >= deathY)
         {
-            imageAlpha = (byte)(((deathPlaneDistance - playery + deathY) / deathPlaneDistance) * 256);
-            black2.color = new Color32(255, 255, 255, imageAlpha);
+            fade(deathPlaneDistance, playery, deathY);
         }
         else if (playery < deathY)
         {
             black2.color = new Color32(255, 255, 255, 255);
         }
     }
+
+    void fade(int difVar, float playerVar, int bottomVar)
+    {
+        imageAlpha = (byte)(((difVar - playerVar + bottomVar) / difVar) * 256);
+        black2.color = new Color32(255, 255, 255, imageAlpha);
+    }
+
 }
+
+
