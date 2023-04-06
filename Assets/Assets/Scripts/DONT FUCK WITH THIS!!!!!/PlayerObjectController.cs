@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 using Steamworks;
+using Newtonsoft.Json.Bson;
 
 public class PlayerObjectController : NetworkBehaviour
 {
@@ -10,6 +11,7 @@ public class PlayerObjectController : NetworkBehaviour
     [SyncVar] public int playerIDNumber;
     [SyncVar] public ulong playerSteamID;
     [SyncVar(hook = nameof(PlayerNameUpdate))] public string PlayerName;
+    [SyncVar(hook = nameof(PlayerReadyUpdate))] public bool Ready;
 
     private CustomNetworkManager manager; 
 
@@ -17,9 +19,43 @@ public class PlayerObjectController : NetworkBehaviour
     {
         get
         {
-            if (manager != null) return Manager;
+            if (manager != null)
+            {
+                return manager;
+            }
 
             return manager = CustomNetworkManager.singleton as CustomNetworkManager;
+        }
+    }
+
+    private void Start()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
+
+    private void PlayerReadyUpdate(bool oldValue, bool newValue)
+    {
+        if(isServer)
+        {
+            this.Ready = newValue;
+        }
+        if (isClient)
+        {
+            LobbyController.instance.UpdatePlayerList();
+        }
+    }
+
+    [Command]
+    private void CMDSetPlayerReady()
+    {
+        this.PlayerReadyUpdate(this.Ready, !this.Ready);
+    }
+
+    public void ChangeReady()
+    {
+        if (isOwned)
+        {
+            CMDSetPlayerReady();
         }
     }
 
@@ -61,5 +97,19 @@ public class PlayerObjectController : NetworkBehaviour
         {
             LobbyController.instance.UpdatePlayerList();
         }
+    }
+
+    public void CanStartGame(string SceneName)
+    {
+        if (isOwned)
+        {
+            CmdCanStartGame(SceneName);
+        }
+    }
+
+    [Command]
+    public void CmdCanStartGame(string SceneName)
+    {
+        manager.StartGame(SceneName);
     }
 }

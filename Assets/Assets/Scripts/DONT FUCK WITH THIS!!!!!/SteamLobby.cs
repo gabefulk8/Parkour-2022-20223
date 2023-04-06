@@ -7,13 +7,13 @@ using UnityEngine.UI;
 
 public class SteamLobby : MonoBehaviour
 {
-    public static SteamLobby instance;
+    public static SteamLobby Instance;
 
     protected Callback<LobbyCreated_t> lobbyCreated;
     protected Callback<GameLobbyJoinRequested_t> joinRequest;
     protected Callback<LobbyEnter_t> lobbyEnter;
 
-    public ulong currentLobbyID;
+    public ulong CurrentLobbyID;
     private const string HostAddressKey = "HostAddress";
     private CustomNetworkManager nManager;
 
@@ -21,7 +21,7 @@ public class SteamLobby : MonoBehaviour
     private void Start()
     {
         if(!SteamManager.Initialized) { return; }
-        if(instance == null) { instance = this; }
+        if(Instance == null) { Instance = this; }
 
         nManager = GetComponent<CustomNetworkManager>();
 
@@ -57,7 +57,7 @@ public class SteamLobby : MonoBehaviour
     private void OnLobbyEntered(LobbyEnter_t callback)
     {
         //Everyone
-        currentLobbyID = callback.m_ulSteamIDLobby;
+        CurrentLobbyID = callback.m_ulSteamIDLobby;
 
         //Clients
         if (NetworkServer.active) { return; }

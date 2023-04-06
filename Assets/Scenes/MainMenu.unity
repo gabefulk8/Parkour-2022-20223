@@ -637,7 +637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe12c6790d098aa4ca90456f7a9f0f47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLobbyID: 0
+  CurrentLobbyID: 0
 --- !u!114 &2072511613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -694,9 +694,9 @@ MonoBehaviour:
   autoCreatePlayer: 1
   playerSpawnMethod: 0
   spawnPrefabs:
-  - {fileID: 5374622298442739404, guid: e5e57d4c605fee24c88269da2cd263af, type: 3}
+  - {fileID: 6147206706782613933, guid: cc37cb88ecef3a84481d9b8376e9fd07, type: 3}
   timeInterpolationGui: 0
-  GamePlayerPrefab: {fileID: 168174352218046349, guid: e5e57d4c605fee24c88269da2cd263af,
+  GamePlayerPrefab: {fileID: 1823612936175695633, guid: cc37cb88ecef3a84481d9b8376e9fd07,
     type: 3}
 --- !u!4 &2072511616
 Transform:

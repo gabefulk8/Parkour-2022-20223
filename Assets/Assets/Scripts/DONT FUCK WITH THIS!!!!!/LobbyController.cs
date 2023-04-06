@@ -5,6 +5,7 @@ using Mirror;
 using Steamworks;
 using UnityEngine.UI;
 using System.Linq;
+using TMPro;
 
 public class LobbyController : MonoBehaviour
 {
@@ -18,8 +19,11 @@ public class LobbyController : MonoBehaviour
 
     public ulong CurrentLobbyID;
     public bool PlayerItemCreated = false;
-    private List<PlayerListItem> PlayerListItems= new List<PlayerListItem>();
+    private List<PlayerListItem> PlayerListItems = new List<PlayerListItem>();
     public PlayerObjectController LocalPlayerController;
+
+    public Button StartGameButton;
+    public TextMeshProUGUI ReadyButtonText;
 
 
     private CustomNetworkManager manager;
@@ -28,7 +32,10 @@ public class LobbyController : MonoBehaviour
     {
         get
         {
-            if (manager != null) return Manager;
+            if (manager != null)
+            {
+                return manager;
+            }
 
             return manager = CustomNetworkManager.singleton as CustomNetworkManager;
         }
@@ -39,9 +46,61 @@ public class LobbyController : MonoBehaviour
         if(instance == null) { instance = this; }
     }
 
+    public void readyPlayer()
+    {
+        LocalPlayerController.ChangeReady();
+    }
+
+    public void UpdateButton()
+    {
+        if (LocalPlayerController.Ready)
+        {
+            ReadyButtonText.text = "Unready";
+        }
+        else
+        {
+            ReadyButtonText.text = "Ready";
+        }
+    }
+
+    public void CheckIfAllReady()
+    {
+        bool AllReady = false;
+
+        foreach(PlayerObjectController player in Manager.GamePlayers)
+        {
+            if (player.Ready)
+            {
+                AllReady = true;
+            }
+            else
+            {
+                AllReady = false;
+                break;
+            }
+        }
+
+        if (AllReady) 
+        {
+            if (LocalPlayerController.playerIDNumber == 1)
+            {
+                StartGameButton.interactable = true;
+            }
+            else
+            {
+                StartGameButton.interactable = false;
+            }
+        }
+
+        else
+        {
+            StartGameButton.interactable = false;
+        }
+    }
+
     public void UpdateLobbyName()
     {
-        CurrentLobbyID = Manager.GetComponent<SteamLobby>().currentLobbyID;
+        CurrentLobbyID = Manager.GetComponent<SteamLobby>().CurrentLobbyID;
         LobbyNameText.text = SteamMatchmaking.GetLobbyData(new CSteamID(CurrentLobbyID), "name");
     }
 
@@ -70,6 +129,7 @@ public class LobbyController : MonoBehaviour
             NewPlayerItemScript.PlayerName = player.PlayerName;
             NewPlayerItemScript.ConnectionID = player.connectionID;
             NewPlayerItemScript.PlayerSteamID = player.playerSteamID;
+            NewPlayerItemScript.Ready = player.Ready;
             NewPlayerItemScript.SetPlayerValues();
 
             NewPlayerItem.transform.SetParent(PlayerListViewContent.transform);
@@ -92,6 +152,7 @@ public class LobbyController : MonoBehaviour
                 NewPlayerItemScript.PlayerName = player.PlayerName;
                 NewPlayerItemScript.ConnectionID = player.connectionID;
                 NewPlayerItemScript.PlayerSteamID = player.playerSteamID;
+                NewPlayerItemScript.Ready = player.Ready;
                 NewPlayerItemScript.SetPlayerValues();
 
                 NewPlayerItem.transform.SetParent(PlayerListViewContent.transform);
@@ -112,10 +173,17 @@ public class LobbyController : MonoBehaviour
                 if(PlayerListItemScript.ConnectionID == player.connectionID)
                 {
                     PlayerListItemScript.PlayerName = player.PlayerName;
+                    PlayerListItemScript.Ready = player.Ready;
                     PlayerListItemScript.SetPlayerValues();
+                    if(player == LocalPlayerController)
+                    {
+                        UpdateButton();
+                    }
                 }
             }
         }
+
+        CheckIfAllReady();
     }
     
     public void RemovePlayerItem()
@@ -141,5 +209,10 @@ public class LobbyController : MonoBehaviour
 
             }
         }
+    }
+
+    public void StartGame(string SceneName)
+    {
+        LocalPlayerController.CanStartGame(SceneName);
     }
 }
