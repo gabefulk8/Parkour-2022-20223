@@ -19,11 +19,17 @@ public class PlayerLobbyController : MonoBehaviour
     {
         if(SceneManager.GetActiveScene().name == "Game")
         {
-            Playermodel.SetActive(true);
+            if(Playermodel.activeSelf == false)
+            {
+                Playermodel.SetActive(true);
+            }
         }
         else if (SceneManager.GetActiveScene().name == "Lobby")
         {
-            Playermodel.SetActive(false);
+            if (Playermodel.activeSelf == true)
+            {
+                Playermodel.SetActive(false);
+            }
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
