@@ -6,6 +6,7 @@ using Steamworks;
 using UnityEngine.UI;
 using System.Linq;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class LobbyController : MonoBehaviour
 {
@@ -214,5 +215,10 @@ public class LobbyController : MonoBehaviour
     public void StartGame(string SceneName)
     {
         LocalPlayerController.CanStartGame(SceneName);
+    }
+
+    public void BacktoMenu(string SceneName)
+    {
+        SceneManager.LoadScene(SceneName);
     }
 }

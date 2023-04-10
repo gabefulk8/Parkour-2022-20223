@@ -28,4 +28,5 @@ public class CustomNetworkManager : NetworkManager
     {
         ServerChangeScene(SceneName);
     }
+
 }
