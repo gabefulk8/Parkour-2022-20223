@@ -93442,6 +93442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Black: {fileID: 358319129}
   Player: {fileID: 199112349}
+  mainplayer: {fileID: 0}
   deathY: -20
   deathPlaneDistance: 10
 --- !u!95 &1402948713

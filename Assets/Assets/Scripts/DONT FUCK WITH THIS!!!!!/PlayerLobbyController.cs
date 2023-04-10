@@ -3,13 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 using UnityEngine.SceneManagement;
+using TMPro;
+using Steamworks;
 
 public class PlayerLobbyController : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject Playermodel;
+    public TextMeshProUGUI gameOverText;
+    public Canvas canvas;
+    public GameObject canvas2;
+    public GameObject GameOverTextObject;
+    public GameObject player;
+    public GameObject gameManager;
     [SerializeField] GameObject[] spawnLocations = new GameObject[4];
-    private bool foundPoints = false;
+    //private bool foundPoints = false;
     private Transform[] spawnTransforms = new Transform[4];
     [SerializeField] Transform playerTransform;
 
@@ -51,7 +59,7 @@ public class PlayerLobbyController : MonoBehaviour
             }
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            foundPoints = false;
+            //foundPoints = false;
         }
     }
 
@@ -67,4 +75,13 @@ public class PlayerLobbyController : MonoBehaviour
 
     }
     */
+
+    public void killthePlayer()
+    {
+        GameOverTextObject = GameObject.Find("GameOverText");
+        gameOverText = GameOverTextObject.GetComponent<TextMeshProUGUI>();
+        gameOverText.enabled = true;
+        gameOverText.text = SteamFriends.GetPersonaName().ToString() + " Died lmao";
+
+    }
 }

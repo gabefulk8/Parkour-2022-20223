@@ -8,6 +8,7 @@ public class FadetoBlack : MonoBehaviour
 {
     [SerializeField] GameObject Black;
     [SerializeField] GameObject Player;
+    [SerializeField] GameObject mainplayer;
     private Image black2;
     [SerializeField] int deathY;
     [SerializeField] int deathPlaneDistance;
@@ -31,6 +32,7 @@ public class FadetoBlack : MonoBehaviour
         else if (playery < deathY)
         {
             black2.color = new Color32(255, 255, 255, 255);
+            mainplayer.GetComponent<PlayerLobbyController>().killthePlayer();
         }
     }
 

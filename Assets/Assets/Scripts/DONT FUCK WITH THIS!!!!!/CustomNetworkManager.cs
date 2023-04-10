@@ -28,5 +28,9 @@ public class CustomNetworkManager : NetworkManager
     {
         ServerChangeScene(SceneName);
     }
-
+    
+    public void EndGame()
+    {
+        ServerChangeScene("EndScreen");
+    }
 }
