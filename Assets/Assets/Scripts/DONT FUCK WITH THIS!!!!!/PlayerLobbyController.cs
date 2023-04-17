@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using Steamworks;
 
-public class PlayerLobbyController : MonoBehaviour
+public class PlayerLobbyController : NetworkBehaviour
 {
     // Start is called before the first frame update
     public GameObject Playermodel;

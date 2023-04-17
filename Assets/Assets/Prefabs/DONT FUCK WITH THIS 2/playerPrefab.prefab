@@ -93408,8 +93408,9 @@ GameObject:
   - component: {fileID: 2456948366824065350}
   - component: {fileID: 3296219617300280411}
   - component: {fileID: 1080334546013313831}
+  - component: {fileID: 1059838312431185030}
   m_Layer: 0
-  m_Name: PlayerObject
+  m_Name: playerPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93481,6 +93482,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 932b70689dcaa364c92477149e5279d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0.1
   Playermodel: {fileID: 6286528224260595369}
   gameOverText: {fileID: 2136796683969641151}
   canvas: {fileID: 1888763841756041437}
@@ -93558,6 +93562,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &1059838312431185030
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6147206706782613933}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4777371684598551356, guid: bdf332556eae01c4eaeace6541738366, type: 3}
 --- !u!1 &6265253260042275978
 GameObject:
   m_ObjectHideFlags: 0
