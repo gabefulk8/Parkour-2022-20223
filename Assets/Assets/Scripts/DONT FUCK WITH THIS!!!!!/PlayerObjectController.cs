@@ -33,6 +33,28 @@ public class PlayerObjectController : NetworkBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
+    private void Update()
+    {
+        CharacterController charCont = GetComponent<CharacterController>();
+        Transform playerCams = transform.Find("Container");
+
+        if (!isLocalPlayer)
+        {
+
+            playerCams.gameObject.SetActive(false);
+            charCont.enabled = false;
+            
+            return;
+        }
+
+        Debug.Log("************");
+        Debug.Log(connectionID + " - " + this.gameObject.name);
+        Debug.Log("************");
+
+        playerCams.gameObject.SetActive(true);
+        charCont.enabled = true;
+    }
+
     private void PlayerReadyUpdate(bool oldValue, bool newValue)
     {
         if(isServer)
@@ -62,9 +84,12 @@ public class PlayerObjectController : NetworkBehaviour
     public override void OnStartAuthority()
     {
         CmdSetPlayerName(SteamFriends.GetPersonaName().ToString());
+
         gameObject.name = "LocalGamePlayer";
         LobbyController.instance.FindLocalPlayer();
         LobbyController.instance.UpdateLobbyName();
+
+        CharacterController charCont = GetComponent<CharacterController>();
     }
 
     public override void OnStartClient()
@@ -72,6 +97,7 @@ public class PlayerObjectController : NetworkBehaviour
         Manager.GamePlayers.Add(this);
         LobbyController.instance.UpdateLobbyName(); 
         LobbyController.instance.UpdatePlayerList();
+        Debug.Log(this.connectionID + " - " + this.name);
     }
 
     public override void OnStopClient()

@@ -5,6 +5,7 @@ using Mirror;
 using UnityEngine.SceneManagement;
 using TMPro;
 using Steamworks;
+using PlayMaker;
 
 public class PlayerLobbyController : NetworkBehaviour
 {
@@ -21,9 +22,11 @@ public class PlayerLobbyController : NetworkBehaviour
     private Transform[] spawnTransforms = new Transform[4];
     [SerializeField] Transform playerTransform;
 
+    public PlayMakerFSM gravity;
+
     void Start()
     {
-        Playermodel.SetActive(false);
+        
     }
 
     // Update is called once per frame
@@ -31,7 +34,9 @@ public class PlayerLobbyController : NetworkBehaviour
     {
         if(SceneManager.GetActiveScene().name == "Game")
         {
-            if(Playermodel.activeSelf == false)
+            gravity.enabled = true;
+            
+            if (Playermodel.activeSelf == false)
             {
                 Playermodel.SetActive(true);
 
@@ -49,6 +54,8 @@ public class PlayerLobbyController : NetworkBehaviour
 
                 SpawnCharacter();
                 */
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
         }
         else if (SceneManager.GetActiveScene().name == "Lobby")
@@ -56,6 +63,7 @@ public class PlayerLobbyController : NetworkBehaviour
             if (Playermodel.activeSelf == true)
             {
                 Playermodel.SetActive(false);
+                gravity.enabled = false;
             }
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
