@@ -170,7 +170,7 @@ public class LobbyController : MonoBehaviour
         {
             foreach(PlayerListItem PlayerListItemScript in PlayerListItems)
             {
-                if(PlayerListItemScript.ConnectionID == player.connectionID)
+                if (PlayerListItemScript.ConnectionID == player.connectionID)
                 {
                     PlayerListItemScript.PlayerName = player.PlayerName;
                     PlayerListItemScript.Ready = player.Ready;
