@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
@@ -8,6 +9,9 @@ public class UIManager : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject controlMenu;
     public GameObject mainMenuUI;
+    public GameObject panel;
+    public Sprite textSprite;
+    public Sprite noText;
 
     void Start()
     {
@@ -63,13 +67,22 @@ public class UIManager : MonoBehaviour
     }
 
     public void ControlScreenToggle()
-    {
+    {  
+        
         if (controlMenu.activeSelf == false)
         {
+            if (SceneManager.GetActiveScene().name == "MainMenu")
+            {
+                panel.GetComponent<Image>().sprite = noText;
+            }
             controlMenu.SetActive(true);
             mainMenuUI.SetActive(false);
         } else if (controlMenu.activeSelf == true)
         {
+            if (SceneManager.GetActiveScene().name == "MainMenu")
+            {
+                panel.GetComponent<Image>().sprite = textSprite;
+            }
             controlMenu.SetActive(false);
             mainMenuUI.SetActive(true);
         }
