@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fc6098808cb34e247a4fb2a307efcbab
+guid: 510b134e34d24224a9eb6565a43b1066
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,13 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Stilts
-    second: {fileID: 2100000, guid: a9c24405050b8b34c8ae29f80921b77e, type: 2}
+      name: Material.002
+    second: {fileID: 2100000, guid: 2ad44bc8b173b0c4789a6769a7961a6c, type: 2}
   - first:
-      type: UnityEngine:Material
+      type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: Vent
-    second: {fileID: 2100000, guid: f31d038b36df5cb44b9e885eede0d648, type: 2}
+      name: Table
+    second: {fileID: 2800000, guid: ef98de4d766ef2444aac5ae8118e02cf, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
