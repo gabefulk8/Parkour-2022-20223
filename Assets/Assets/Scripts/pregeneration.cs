@@ -5,14 +5,14 @@ using UnityEngine;
 public class pregeneration : MonoBehaviour
 {
     [SerializeField] GameObject[] startmodules;
-    [SerializeField] GameObject[] trainmodules;
+    [SerializeField] GameObject[] roadmodules;
     [SerializeField] GameObject[] indoormodules;
     [SerializeField] GameObject[] rooftopmodules;
-    [SerializeField] GameObject[] traintoroof;
-    [SerializeField] GameObject[] traintoindoor;
-    [SerializeField] GameObject[] indoortotrain;
+    [SerializeField] GameObject[] roadtoroof;
+    [SerializeField] GameObject[] roadtoindoor;
+    [SerializeField] GameObject[] indoortoroad;
     [SerializeField] GameObject[] indoortoroof;
-    [SerializeField] GameObject[] rooftotrain;
+    [SerializeField] GameObject[] rooftoroad;
     [SerializeField] GameObject[] rooftoindoor;
     public Transform startingmodule;
     private Transform currentmodule;
@@ -35,7 +35,7 @@ public class pregeneration : MonoBehaviour
         repeat = -1;
         goOn = true;
         currentmodule = startingmodule;
-        Invoke("SpawnModule", 0f);
+        Invoke("SpawnModule", 0);
         InvokeRepeating("increaseDeathSpeed", 7, 7);
     }
 
@@ -63,58 +63,58 @@ public class pregeneration : MonoBehaviour
         {
             switch (whichTheme) //check what the last module type was
             {
-                case 0://train
+                case 0://road
                     switch (startPoint)//check next module type
                     {
                         case 1://indoor
-                            whichModule = Random.Range(0, traintoindoor.Length);
+                            whichModule = Random.Range(0, roadtoindoor.Length);
                             endpoint = currentmodule.GetChild(1).position;
-                            newmodule = Instantiate(traintoindoor[whichModule], endpoint, Quaternion.Euler(0, 0, 0));
+                            newmodule = Instantiate(roadtoindoor[whichModule], endpoint, Quaternion.Euler(0, 0, 0));
                             currentmodule = newmodule.transform;
                             //print("spawned: " + newmodule);
-                            InvokeRepeating("indoorspawn", 3f, 3f);
+                            InvokeRepeating("indoorspawn", 5f, 5f);
                             break;
                         case 2://rooftop
-                            whichModule = Random.Range(0, traintoroof.Length);
+                            whichModule = Random.Range(0, roadtoroof.Length);
                             endpoint = currentmodule.GetChild(1).position;
-                            newmodule = Instantiate(traintoroof[whichModule], endpoint, Quaternion.Euler(0, 0, 0));
+                            newmodule = Instantiate(roadtoroof[whichModule], endpoint, Quaternion.Euler(0, 0, 0));
                             currentmodule = newmodule.transform;
                             //print("spawned: " + newmodule);
-                            InvokeRepeating("rooftopspawn", 3f, 3f);
+                            InvokeRepeating("rooftopspawn", 5f, 5f);
                             break;
                     }
                     break;
                 case 1://indoor
                     switch (startPoint)//determine next module type
                     {
-                        case 0://train
-                            whichModule = Random.Range(0, indoortotrain.Length);
+                        case 0://road
+                            whichModule = Random.Range(0, indoortoroad.Length);
                             endpoint = currentmodule.GetChild(1).position;
-                            newmodule = Instantiate(indoortotrain[whichModule], endpoint, Quaternion.Euler(0, 0, 0));
+                            newmodule = Instantiate(indoortoroad[whichModule], endpoint, Quaternion.Euler(0, 0, 0));
                             currentmodule = newmodule.transform;
                             //print("spawned: " + newmodule);
-                            InvokeRepeating("trainspawn", 3f, 3f);
+                            InvokeRepeating("roadspawn", 5f, 5f);
                             break;
                         case 2://rooftop
                             whichModule = Random.Range(0, indoortoroof.Length);
                             endpoint = currentmodule.GetChild(1).position;
-                            newmodule = Instantiate(indoortoroof[whichModule], endpoint, Quaternion.Euler(0, 0, 0));
+                            newmodule = Instantiate(indoortoroof[whichModule], endpoint, Quaternion.Euler(0, 180, 0));
                             currentmodule = newmodule.transform;
                             //print("spawned: " + newmodule);
-                            InvokeRepeating("rooftopspawn", 3f, 3f);
+                            InvokeRepeating("rooftopspawn", 5f, 5f);
                             break;
                     }
                     break;
                 case 2://rooftop
                     switch (startPoint)//determine next module type
                     {
-                        case 0://train
-                            whichModule = Random.Range(0, rooftotrain.Length);
+                        case 0://road
+                            whichModule = Random.Range(0, rooftoroad.Length);
                             endpoint = currentmodule.GetChild(1).position;
-                            newmodule = Instantiate(rooftotrain[whichModule], endpoint, Quaternion.Euler(0, 0, 0));
+                            newmodule = Instantiate(rooftoroad[whichModule], endpoint, Quaternion.Euler(0, 0, 0));
                             currentmodule = newmodule.transform;
                             //print("spawned: " + newmodule);
-                            InvokeRepeating("trainspawn", 3f, 3f);
+                            InvokeRepeating("roadspawn", 5f, 5f);
                             break;
                         case 1://indoor
                             whichModule = Random.Range(0, rooftoindoor.Length);
@@ -122,7 +122,7 @@ public class pregeneration : MonoBehaviour
                             newmodule = Instantiate(rooftoindoor[whichModule], endpoint, Quaternion.Euler(0, 0, 0));
                             currentmodule = newmodule.transform;
                             //print("spawned: " + newmodule);
-                            InvokeRepeating("indoorspawn", 3f, 3f);
+                            InvokeRepeating("indoorspawn", 5f, 5f);
                             break;
                     }
                     break;
@@ -130,20 +130,20 @@ public class pregeneration : MonoBehaviour
         }
     }
 
-    void trainspawn()
+    void roadspawn()
     {
-        whichModule = Random.Range(0, trainmodules.Length);
+        whichModule = Random.Range(0, roadmodules.Length);
         if (whichModule == repeat) goOn = false;
         while (whichModule == repeat)
         {
-            whichModule = Random.Range(0, trainmodules.Length);
+            whichModule = Random.Range(0, roadmodules.Length);
             if (whichModule != repeat) goOn = true;
         }
 
         if(goOn == true)
         {
             endpoint = currentmodule.GetChild(1).position;
-            newmodule = Instantiate(trainmodules[whichModule], endpoint, Quaternion.Euler(0, 0, 0));
+            newmodule = Instantiate(roadmodules[whichModule], endpoint, Quaternion.Euler(0, 0, 0));
             currentmodule = newmodule.transform;
             repeat = whichModule;
             mCounter++;
@@ -153,8 +153,8 @@ public class pregeneration : MonoBehaviour
             if (whichModule == 0 && mCounter >= 3)
             {
                 variableReset(0);
-                Invoke("SpawnModule", 3f);
-                CancelInvoke("trainspawn");
+                Invoke("SpawnModule", 5f);
+                CancelInvoke("roadspawn");
             }
         }
     }
@@ -165,7 +165,7 @@ public class pregeneration : MonoBehaviour
         if (whichModule == repeat) goOn = false; 
         while (whichModule == repeat)
         {
-            whichModule = Random.Range(0, trainmodules.Length);
+            whichModule = Random.Range(0, roadmodules.Length);
             if (whichModule != repeat) goOn = true;
         }
 
@@ -182,7 +182,7 @@ public class pregeneration : MonoBehaviour
             if (whichModule == 0 && mCounter >= 3)
             {
                 variableReset(1);
-                Invoke("SpawnModule", 3f);
+                Invoke("SpawnModule", 5f);
                 CancelInvoke("indoorspawn");
             }
         }
@@ -194,7 +194,7 @@ public class pregeneration : MonoBehaviour
         if (whichModule == repeat) goOn = false;
         while (whichModule == repeat)
         {
-            whichModule = Random.Range(0, trainmodules.Length);
+            whichModule = Random.Range(0, roadmodules.Length);
             if (whichModule != repeat) goOn = true;
         }
 
@@ -211,7 +211,7 @@ public class pregeneration : MonoBehaviour
             if (whichModule == 0 && mCounter >= 3)
             {
                 variableReset(2);
-                Invoke("SpawnModule", 3f);
+                Invoke("SpawnModule", 5f);
                 CancelInvoke("rooftopspawn");
             }
         }
@@ -239,9 +239,9 @@ public class pregeneration : MonoBehaviour
             */
         // :)
         
-        if (deathSpeed >= 6)
+        if (deathSpeed >= 5.5f)
         {
-            deathSpeed = 6;
+            deathSpeed = 5.5f;
         } else
         {
             deathSpeed *= 1.25f;
