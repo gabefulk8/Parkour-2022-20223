@@ -27,7 +27,7 @@ public class pregeneration : MonoBehaviour
     private bool goOn;
 
     public GameObject deathPlane;
-    public float deathSpeed = 2f;
+    [SerializeField] private float deathSpeed = 2f;
     
     void Start()
     {
@@ -36,7 +36,7 @@ public class pregeneration : MonoBehaviour
         goOn = true;
         currentmodule = startingmodule;
         Invoke("SpawnModule", 0);
-        InvokeRepeating("increaseDeathSpeed", 7, 7);
+        Invoke("increaseDeathSpeed", 7);
     }
 
     void FixedUpdate()
@@ -72,15 +72,15 @@ public class pregeneration : MonoBehaviour
                             newmodule = Instantiate(roadtoindoor[whichModule], endpoint, Quaternion.Euler(0, 0, 0));
                             currentmodule = newmodule.transform;
                             //print("spawned: " + newmodule);
-                            InvokeRepeating("indoorspawn", 5f, 5f);
+                            InvokeRepeating("indoorspawn", 3f, 3f);
                             break;
                         case 2://rooftop
                             whichModule = Random.Range(0, roadtoroof.Length);
                             endpoint = currentmodule.GetChild(1).position;
-                            newmodule = Instantiate(roadtoroof[whichModule], endpoint, Quaternion.Euler(0, 0, 0));
+                            newmodule = Instantiate(roadtoroof[whichModule], endpoint, Quaternion.Euler(0, 180, 0));
                             currentmodule = newmodule.transform;
                             //print("spawned: " + newmodule);
-                            InvokeRepeating("rooftopspawn", 5f, 5f);
+                            InvokeRepeating("rooftopspawn", 3f, 3f);
                             break;
                     }
                     break;
@@ -93,7 +93,7 @@ public class pregeneration : MonoBehaviour
                             newmodule = Instantiate(indoortoroad[whichModule], endpoint, Quaternion.Euler(0, 0, 0));
                             currentmodule = newmodule.transform;
                             //print("spawned: " + newmodule);
-                            InvokeRepeating("roadspawn", 5f, 5f);
+                            InvokeRepeating("roadspawn", 3f, 3f);
                             break;
                         case 2://rooftop
                             whichModule = Random.Range(0, indoortoroof.Length);
@@ -101,7 +101,7 @@ public class pregeneration : MonoBehaviour
                             newmodule = Instantiate(indoortoroof[whichModule], endpoint, Quaternion.Euler(0, 180, 0));
                             currentmodule = newmodule.transform;
                             //print("spawned: " + newmodule);
-                            InvokeRepeating("rooftopspawn", 5f, 5f);
+                            InvokeRepeating("rooftopspawn", 3f, 3f);
                             break;
                     }
                     break;
@@ -114,7 +114,7 @@ public class pregeneration : MonoBehaviour
                             newmodule = Instantiate(rooftoroad[whichModule], endpoint, Quaternion.Euler(0, 0, 0));
                             currentmodule = newmodule.transform;
                             //print("spawned: " + newmodule);
-                            InvokeRepeating("roadspawn", 5f, 5f);
+                            InvokeRepeating("roadspawn", 3f, 3f);
                             break;
                         case 1://indoor
                             whichModule = Random.Range(0, rooftoindoor.Length);
@@ -122,7 +122,7 @@ public class pregeneration : MonoBehaviour
                             newmodule = Instantiate(rooftoindoor[whichModule], endpoint, Quaternion.Euler(0, 0, 0));
                             currentmodule = newmodule.transform;
                             //print("spawned: " + newmodule);
-                            InvokeRepeating("indoorspawn", 5f, 5f);
+                            InvokeRepeating("indoorspawn", 3f, 3f);
                             break;
                     }
                     break;
@@ -153,7 +153,7 @@ public class pregeneration : MonoBehaviour
             if (whichModule == 0 && mCounter >= 3)
             {
                 variableReset(0);
-                Invoke("SpawnModule", 5f);
+                Invoke("SpawnModule", 3f);
                 CancelInvoke("roadspawn");
             }
         }
@@ -182,7 +182,7 @@ public class pregeneration : MonoBehaviour
             if (whichModule == 0 && mCounter >= 3)
             {
                 variableReset(1);
-                Invoke("SpawnModule", 5f);
+                Invoke("SpawnModule", 3f);
                 CancelInvoke("indoorspawn");
             }
         }
@@ -211,7 +211,7 @@ public class pregeneration : MonoBehaviour
             if (whichModule == 0 && mCounter >= 3)
             {
                 variableReset(2);
-                Invoke("SpawnModule", 5f);
+                Invoke("SpawnModule", 3f);
                 CancelInvoke("rooftopspawn");
             }
         }
@@ -239,12 +239,13 @@ public class pregeneration : MonoBehaviour
             */
         // :)
         
-        if (deathSpeed >= 5.5f)
+        if (deathSpeed >= 4f)
         {
-            deathSpeed = 5.5f;
+            deathSpeed = 4f;
         } else
         {
-            deathSpeed *= 1.25f;
+            deathSpeed *= 1.1f;
         }
+        Invoke("increaseDeathSpeed", 7);
     }
 }
