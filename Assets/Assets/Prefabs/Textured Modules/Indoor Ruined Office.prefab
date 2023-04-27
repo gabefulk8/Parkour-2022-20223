@@ -3881,6 +3881,7 @@ GameObject:
   - component: {fileID: 3588805723619209276}
   - component: {fileID: 3588805723619209277}
   - component: {fileID: 3588805723619209278}
+  - component: {fileID: 5065052191538555928}
   m_Layer: 0
   m_Name: Indoor Ruined Office
   m_TagString: Untagged
@@ -22679,6 +22680,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &5065052191538555928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3588805723619209279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70fba6b044b2104390e20781c8bb2b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3588805723629942472
 GameObject:
   m_ObjectHideFlags: 0

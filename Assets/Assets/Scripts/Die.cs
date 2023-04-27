@@ -6,26 +6,24 @@ using TMPro;
 public class Die : MonoBehaviour
 {
     public GameObject UI;
-    public GameObject DeathCube;
     public GameObject deathText;
+    public GameObject deathPlane;
+    public GameObject Player;
 
     float deathDist = 1000f;
-
-    void Start()
-    {
-
-    }
+    float runDist = 0f;
 
     void Update()
     {
-        deathDist = this.transform.position.x - DeathCube.transform.position.x;
+        runDist = Player.transform.position.x - 55;
+        deathDist = this.transform.position.x - deathPlane.transform.position.x;
 
         if (deathDist <= .7)
         {
-            Debug.Log("blicked");
+            //Debug.Log("blicked");
             UI.GetComponent<UIManager>().ToMainMenu();
         }
 
-        deathText.GetComponent<TextMeshProUGUI>().text = "Death Distance: " + Mathf.Round(deathDist);
+        deathText.GetComponent<TextMeshProUGUI>().text = "Distance: " + Mathf.Round(runDist);
     }
 }

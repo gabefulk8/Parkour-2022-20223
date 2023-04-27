@@ -53,6 +53,7 @@ GameObject:
   - component: {fileID: 2049066888964890619}
   - component: {fileID: 2049066888964890620}
   - component: {fileID: 2049066888964890621}
+  - component: {fileID: 3766105870883270117}
   m_Layer: 0
   m_Name: Roof Simple Swing
   m_TagString: Untagged
@@ -3433,6 +3434,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &3766105870883270117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049066888964890622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70fba6b044b2104390e20781c8bb2b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathField: {fileID: 6829590217344070740, guid: 5d5dcecc91c4a594484adcc8af7ae6b6,
+    type: 3}
 --- !u!1 &2049066889117639124
 GameObject:
   m_ObjectHideFlags: 0

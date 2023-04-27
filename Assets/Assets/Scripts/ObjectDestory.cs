@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class ObjectDestory : MonoBehaviour
 {
-    [SerializeField] int timer;
+    GameObject deathField;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        Invoke("DestroyObject", 20f);
+        deathField = GameObject.Find("DeathCube");
     }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        if (deathField.transform.position.x > this.transform.position.x + 100)
+        {
+            DestroyObject();
+        }
     }
     void DestroyObject()
     {

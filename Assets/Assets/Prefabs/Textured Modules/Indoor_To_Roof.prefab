@@ -19750,6 +19750,7 @@ GameObject:
   - component: {fileID: 7979938085738245114}
   - component: {fileID: 7979938085738245115}
   - component: {fileID: 7979938085738245112}
+  - component: {fileID: -7153018255396230839}
   m_Layer: 0
   m_Name: Indoor_To_Roof
   m_TagString: Untagged
@@ -23229,6 +23230,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &-7153018255396230839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7979938085738245113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70fba6b044b2104390e20781c8bb2b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8163242134643607216
 GameObject:
   m_ObjectHideFlags: 0

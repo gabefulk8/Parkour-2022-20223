@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 8319878475882779332}
   - component: {fileID: 6145264536895014966}
   - component: {fileID: 5688470580566492594}
+  - component: {fileID: -5272425555527200097}
   m_Layer: 0
   m_Name: Indoor_To_Indoor
   m_TagString: Untagged
@@ -1107,6 +1108,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &-5272425555527200097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4087787876207222544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70fba6b044b2104390e20781c8bb2b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathField: {fileID: 6829590217344070740, guid: 5d5dcecc91c4a594484adcc8af7ae6b6,
+    type: 3}
 --- !u!1 &4205976755825795478
 GameObject:
   m_ObjectHideFlags: 0

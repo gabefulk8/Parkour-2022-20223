@@ -247,6 +247,7 @@ GameObject:
   - component: {fileID: 3811002193871400102}
   - component: {fileID: 3811002193871400103}
   - component: {fileID: 3811002193871400096}
+  - component: {fileID: -8094522143351297525}
   m_Layer: 0
   m_Name: Roof Construction
   m_TagString: Untagged
@@ -15116,6 +15117,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &-8094522143351297525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3811002193871400097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70fba6b044b2104390e20781c8bb2b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3811002194319151881
 GameObject:
   m_ObjectHideFlags: 0
