@@ -66,6 +66,13 @@ public class UIManager : MonoBehaviour
         RestartLevel();    
     }
 
+    public void Practice()
+    {
+        Cursor.visible = false;
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Practice");
+    }
+
     public void ControlScreenToggle()
     {  
         
@@ -87,4 +94,6 @@ public class UIManager : MonoBehaviour
             mainMenuUI.SetActive(true);
         }
     }
+
+
 }
